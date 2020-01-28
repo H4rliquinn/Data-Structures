@@ -27,7 +27,6 @@ class LRUCache:
 
     def get(self, key):
         node = self.storage.get(key, None)
-        # print("GET", node)
         if node != None:
             self.used.move_to_front(node)
             return node.value
@@ -47,28 +46,13 @@ class LRUCache:
 
     def set(self, key, value):
         exists = self.storage.get(key, None)
-        # print("EXIST", key, exists)
         if exists != None:
-            # print("Before", self.used)
             self.used.delete(exists)
-            # print("After", self.used)
-
         new_node = ListNode(value)
-        # print("New", new_node)
         self.storage[key] = new_node
         self.used.add_to_head(new_node)
-
         if self.used.length > self.limit:
             store_keys = list(self.storage.keys())
             store_val = list(self.storage.values())
             del self.storage[store_keys[store_val.index(self.used.tail)]]
             self.used.remove_from_tail()
-        # print(self.used)  # self.storage,
-
-
-# lcache = LRUCache(5)
-# lcache.set('first', 5)
-# lcache.set('second', 15)
-# lcache.set('second', 20)
-
-# print(lcache)
