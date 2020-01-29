@@ -11,7 +11,7 @@ class BinarySearchTree:
         self.right = None
 
     def __str__(self):
-        return f'BST:{self.value}\nL*{self.left}*\nR*{self.right}*'
+        return f'BST:{self.value}L[{self.left}]R[{self.right}]'
     # Insert the given value into the tree
 
     def insert(self, value):
@@ -64,12 +64,17 @@ class BinarySearchTree:
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
+        self.value = cb(self.value)
+        if self.left != None:
+            self.left.for_each(cb)
+        if self.right != None:
+            self.right.for_each(cb)
 
     # DAY 2 Project -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
+
     def in_order_print(self, node):
         pass
 
@@ -97,10 +102,23 @@ class BinarySearchTree:
 
 bst = BinarySearchTree(6)
 bst.insert(2)
+bst.insert(8)
+# print(bst)
+# bst.insert(17)
+# print(bst.contains(6), bst.contains(17), bst.contains(4))
+# bst.insert(23)
+# bst.insert(18)
 print(bst)
-bst.insert(17)
+# print(bst.get_max())
+print("***")
+
+arr = []
+
+
+# def cb(x): return arr.append(x+10)
+# def cb(x): return x+10
+
+
+bst.for_each(lambda x: x+10)
 print(bst)
-print(bst.contains(6), bst.contains(17), bst.contains(4))
-bst.insert(23)
-bst.insert(18)
-print(bst.get_max())
+print(arr)
