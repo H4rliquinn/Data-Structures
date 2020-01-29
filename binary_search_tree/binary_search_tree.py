@@ -37,11 +37,29 @@ class BinarySearchTree:
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        curr_node = self
+        while True:
+            if curr_node.value == target:
+                return True
+            elif target > curr_node.value:
+                if curr_node.right == None:
+                    return False
+                else:
+                    curr_node = curr_node.right
+            else:
+                if curr_node.left == None:
+                    return False
+                else:
+                    curr_node = curr_node.left
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        curr_node = self
+        while True:
+            if curr_node.right != None:
+                curr_node = curr_node.right
+            else:
+                return curr_node.value
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
@@ -82,3 +100,7 @@ bst.insert(2)
 print(bst)
 bst.insert(17)
 print(bst)
+print(bst.contains(6), bst.contains(17), bst.contains(4))
+bst.insert(23)
+bst.insert(18)
+print(bst.get_max())
