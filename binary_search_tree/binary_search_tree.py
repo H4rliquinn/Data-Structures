@@ -76,10 +76,16 @@ class BinarySearchTree:
     # Hint:  Use a recursive, depth first traversal
 
     def in_order_print(self, node):
-        pass
+        curr_node = node
+        if curr_node.left:
+            curr_node.left.in_order_print(curr_node.left)
+        print(curr_node.value)
+        if curr_node.right:
+            curr_node.right.in_order_print(curr_node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
+
     def bft_print(self, node):
         pass
 
@@ -100,25 +106,25 @@ class BinarySearchTree:
         pass
 
 
-bst = BinarySearchTree(6)
-bst.insert(2)
-bst.insert(8)
+# bst = BinarySearchTree(6)
+# bst.insert(2)
+# bst.insert(8)
 # print(bst)
 # bst.insert(17)
 # print(bst.contains(6), bst.contains(17), bst.contains(4))
 # bst.insert(23)
 # bst.insert(18)
-print(bst)
+# print(bst)
 # print(bst.get_max())
-print("***")
+# print("***")
 
-arr = []
+# arr = []
 
 
 # def cb(x): return arr.append(x+10)
 # def cb(x): return x+10
 
 
-bst.for_each(lambda x: x+10)
-print(bst)
-print(arr)
+# bst.for_each(lambda x: x+10)
+# print(bst)
+# print(arr)
